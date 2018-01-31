@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <?php
-$dsn=getenv('MYSQL_DSN');
-$user=getenv('MYSQL_USER');
-$pass=getenv('MYSQL_PASSWORD');
-
-$con=mysqli_connect($dsn,$user,$pass);?>
+// $con = new mysqli(null, "root", null, "blog_db", null, "/cloudsql/gc-blog-193800:us-central1:gc-blog-sql");
+$con=mysqli_connect("localhost","root","","blog_db");
+if(!$con){
+ die("Connection error: " . mysqli_connect_error());
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,7 +47,7 @@ $con=mysqli_connect($dsn,$user,$pass);?>
 
             <!--SIDE WIDGET CONTENT-->
             <?php
-              $q=mysqli_query($con,"SELECT * FROM blogs");
+              $q=mysqli_query($con,"SELECT * FROM blogs")or die(mysqli_error());
               while ($row=mysqli_fetch_array($q)) {
                 ?>
                 <aside class="col-sm-4" style="height:350px;margin-top:10px;">
