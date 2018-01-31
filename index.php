@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<?php $con=mysqli_connect("localhost","root","","blog_db");?>
+<?php
+$dsn=getenv('MYSQL_DSN');
+$user=getenv('MYSQL_USER');
+$pass=getenv('MYSQL_PASSWORD');
+
+$con=mysqli_connect($dsn,$user,$pass);?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -16,3 +16,12 @@ handlers:
 
 - url: /images
   static_dir: images
+
+env_variables:
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/gc-blog-193800:us-central1:gc-blog-sql;dbname=blog_db
+  MYSQL_USER: root
+  MYSQL_PASSWORD: gcblog123
+  
+libraries:
+- name: MySQLdb
+  version: "latest"
